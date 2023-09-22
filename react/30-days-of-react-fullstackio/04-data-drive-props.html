@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Data Drive e Uso do props</title>
+        <!-- Script tags including React -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="style/timeline.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="demo" id="app"></div>
+
+        <script type="text/babel">
+
+            {/* Fragmento do Cabeçalho */}
+            class Header extends React.Component {
+                render() {
+                    return (
+                        <div className="header">
+                            <div className="menuIcon">
+                                <div className="dashTop"></div>
+                                <div className="dashBottom"></div>
+                                <div className="circle"></div>
+                            </div>
+        
+                            <span className="title">
+                                {/* Vamos enviar dados através do props que significa properties */}
+                                {this.props.title}
+                            </span>
+                            <input type="text" className="searchInput" placeholder="Search..."/>
+                            <div className="fa fa-search searchIcon"></div>
+                        </div>
+                    );
+                }
+            }
+
+            {/* Fragmento do Conteúdo */}
+            class Content extends React.Component {
+                render() {
+                    const {activity} = this.props;
+                    {/* Ou poderia ser const activity = this.props.activity; */}
+
+                    return (
+                        <div className="content">
+                            <div className="line"></div>
+                            {/* Timeline Item */}
+                            <div className="item">
+                                <div className="avatar">
+                                    <img alt={activity.text} src={activity.user.avatar}/>
+                                </div>
+                                <span className="time">
+                                    {activity.timestamp}
+                                </span>
+                                <p>{activity.text}</p>
+                                <div className="commentCount">
+                                    {activity.comments[0].lenght}
+                                </div>
+                            </div>
+                        </div>
+                    );
+                }
+            }
+
+            const activity = {
+                timestamp: new Date().getTime(),
+                text: "Bom-dia!",
+                user: {
+                    id: 1,
+                    name: "Bob",
+                    avatar: "/imgs/dog.webp"
+                },
+                comments: [
+                    {lenght: 1},
+                    {
+                    from: "Ana",
+                    text: "Bom-dia para você também!"
+                    }
+                ]
+                
+            };
+
+            class App extends React.Component {
+                render() {
+                    return (
+                        <div className="notificationsFrame">
+                            <div className="panel">
+                                {/* Vamos passar a informação desejada de forma dinâmica através da propriedade title, que poderá ser reutilizada quantas vezes for necessário */}
+                                <Header title="Timeline"/>
+                                <Header title="Profile"/>
+                                <Header title="Settings"/>
+                                <Header title="Chat"/>
+                                <Content activity={activity}/>
+                            </div>
+                        </div>
+                    );
+                }
+            }
+
+            {/* Em qual seletor vai alocar a aplicação */}
+            const timeline = document.querySelector('#app');
+            ReactDOM.render(<App />, timeline);
+        </script>
+    </body>
+</html>

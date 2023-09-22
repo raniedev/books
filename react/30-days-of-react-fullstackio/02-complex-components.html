@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Complex Components</title>
+        <!-- Script tags including React -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="style/timeline.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="demo" id="app"></div>
+
+        <script type="text/babel">
+            class Timeline extends React.Component {
+                render() {
+                    return (
+                        <div className="notificationsFrame">
+                            <div className="panel">
+                                <div className="header">
+                                    <div className="menuIcon">
+                                        <div className="dashTop"></div>
+                                        <div className="dashBottom"></div>
+                                        <div className="circle"></div>
+                                    </div>
+                
+                                    <span className="title">Timeline</span>
+                                    <input type="text" className="searchInput" placeholder="Search..."/>
+                                    <div className="fa fa-search searchIcon"></div>
+                                </div>
+                
+                                <div className="content">
+                                    <div className="line"></div>
+                                    <div className="item">
+                                        <div className="avatar">
+                                            <img alt="dog" src="/imgs/dog.webp"/>
+                                        </div>
+                                        <span className="time">An hour ago</span>
+                                        <p>At lunch</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="content">
+                                    <div className="line"></div>
+                                    <div className="item">
+                                        <div className="avatar">
+                                            <img alt="dog" src="/imgs/dog.webp"/>
+                                        </div>
+                                        <span className="time">2:01 PM</span>
+                                        <p>Read day two article</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="content">
+                                    <div className="line"></div>
+                                    <div className="item">
+                                        <div className="avatar">
+                                            <img alt="dog" src="/imgs/dog.webp"/>
+                                        </div>
+                                        <span className="time">10:30 AM</span>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="content">
+                                    <div className="line"></div>
+                                    <div className="item">
+                                        <div className="avatar">
+                                            <img alt="dog" src="/imgs/dog.webp"/>
+                                        </div>
+                                        <span className="time">8:21 AM</span>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                }
+            }
+
+            const timeline = document.querySelector('#app');
+            ReactDOM.render(<Timeline />, timeline);
+        </script>
+    </body>
+</html>

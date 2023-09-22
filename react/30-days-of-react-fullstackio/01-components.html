@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Components</title>
+        <!-- Script tags including React -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="comp"></div>
+        
+        <script type="text/babel">
+            class App extends React.Component {
+                render() {
+                    return <h1>Hello from our app</h1>
+                }
+            }
+
+            const onde = document.querySelector('#comp');
+            ReactDOM.render(<App />, onde);
+        </script>
+    </body>
+</html>
